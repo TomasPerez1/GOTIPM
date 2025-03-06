@@ -3,10 +3,10 @@ import { PrismaClient } from "@prisma/client";
 export async function GET() {
   try {
     const _roles = [
-      { value: "dev" },
-      { value: "rrhh" },
-      { value: "ceo" },
-      { value: "marketing" },
+      { value: "dev", name: "Desarrollador" },
+      { value: "rrhh", name: "Recursos humanos" },
+      { value: "ceo", name: "Gerente" },
+      { value: "marketing", name: "Marketing" },
     ];
 
     const prisma = new PrismaClient();

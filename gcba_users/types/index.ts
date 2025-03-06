@@ -1,8 +1,6 @@
-
 export interface Error {
   message: string;
 }
-
 
 export interface Employee {
   dni: bigint;
@@ -14,3 +12,8 @@ export interface Employee {
   updatedAt: Date;
 }
 
+export type Role = {
+  id: number;
+  value: string;
+  name: string;
+};
