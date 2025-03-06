@@ -3,7 +3,7 @@ import { PrismaClient } from "@prisma/client";
 export async function POST(request: Request): Promise<Response> {
   try {
     const { employeeData } = await request.json();
-
+    console.log("SE RECINIO", employeeData);
     const prisma = new PrismaClient();
     const employee = await prisma.employee.create({
       data: employeeData
