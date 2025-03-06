@@ -2,7 +2,7 @@
 const CreateEmployee = () => {
   return (
     <div className="text-4xl">
-      <h1>Tiempo en contra como el que ve el cambio</h1>
+      <h1>Tiempooo en contra como el que ve el cambio</h1>
     </div>
   );
 };
