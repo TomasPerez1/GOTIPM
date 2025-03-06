@@ -4,14 +4,15 @@ import axios from "axios";
 const CreateEmployee = () => {
 
   const testAPI = async () => {
-    const res = await axios.get("/api/employees/create");
-    console.log(res);
+    const res = await axios.get("/api/init");
+
+    console.log("RESPUEST", res);
   };
 
   return (
     <div className="text-4xl">
       <h1>Tiempooox en contra como el que ve el cambio</h1>
-      <button onClick={testAPI}>
+      <button onClick={() => testAPI()}>
         Test Server
       </button>
     </div>

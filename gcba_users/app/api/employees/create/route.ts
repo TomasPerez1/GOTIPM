@@ -1,15 +1,19 @@
+import { PrismaClient } from "@prisma/client";
 
-export async function GET(request: Request) {
+export async function POST(request: Request) {
   try {
-    // const { } = await request.json();
+    const { employeeData } = await request.json();
 
-    console.log("Se accedio al get");
+    const prisma = new PrismaClient();
+    const employee = await prisma.employee.create({
+      data: employeeData
+    });
+
     return Response.json({
-      hola: "zaracatunga"
+      employee
     });
   } catch (err) {
-    console.log("Post err", err);
-
+    console.log("Err creating an employee", err);
     return Response.json({
       err,
     });
