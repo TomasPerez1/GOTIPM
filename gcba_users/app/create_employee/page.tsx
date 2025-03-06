@@ -4,9 +4,17 @@ import axios from "axios";
 const CreateEmployee = () => {
 
   const testAPI = async () => {
-    const res = await axios.get("/api/init");
+    try {
 
-    console.log("RESPUEST", res);
+      const dni = 44444444;
+
+      const res = await axios.delete(`/api/employees/delete`, { data: { dni } });
+
+      console.log("RESPUEST", res);
+
+    } catch(err) {
+      console.log(err);
+    }
   };
 
   return (

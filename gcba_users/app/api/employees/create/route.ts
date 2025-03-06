@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 
-export async function POST(request: Request) {
+export async function POST(request: Request): Promise<Response> {
   try {
     const { employeeData } = await request.json();
 
@@ -13,9 +13,10 @@ export async function POST(request: Request) {
       employee
     });
   } catch (err) {
-    console.log("Err creating an employee", err);
+    const message = `Err creating employee ${err}`;
+    console.log(message);
     return Response.json({
-      err,
-    });
+      message,
+    }) ;
   }
 }

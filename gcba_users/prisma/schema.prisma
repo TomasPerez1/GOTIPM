@@ -8,7 +8,7 @@ datasource db {
 }
 
 model Employee {
-  dni         BigInt   @id @unique
+  dni         Int      @id @unique
   fullName    String
   dateOfBirth DateTime
   description String
