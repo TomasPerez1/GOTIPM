@@ -20,6 +20,7 @@ const eslintConfig = [
       "no-unused-vars": "error",
       "object-curly-spacing": ["error", "always"],
       "no-trailing-spaces": "error",
+      '@typescript-eslint/explicit-function-return-type': 'off', // ? works?
     }
   }
 ];
