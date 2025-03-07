@@ -4,7 +4,6 @@ export async function DELETE(request: Request): Promise<Response> {
   try {
 
     const { dni } = await request.json();
-    console.log("dni", dni);
     const prisma = new PrismaClient();
 
     const deletedEmployee = await prisma.employee.delete({
@@ -13,7 +12,6 @@ export async function DELETE(request: Request): Promise<Response> {
       }
     });
 
-    console.log("deletedEmployee", deletedEmployee);
     return Response.json({
       deletedEmployee
     });
