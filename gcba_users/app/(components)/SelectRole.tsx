@@ -1,4 +1,4 @@
-import type { Role } from "@/types";
+import { Role } from "@/types";
 
 
 interface SelectRoleProps {

@@ -1,13 +1,14 @@
 "use server";
 import axios from "axios";
-import { NewEmployeeData } from "@/types";
+import { NewEmployeeData, Response } from "@/types";
 
 interface EditEmployeeProps {
   dni: number;
   newData: NewEmployeeData
 }
 
-export default async function editEmployee({ dni, newData }: EditEmployeeProps) {
+
+export default async function editEmployee({ dni, newData }: EditEmployeeProps): Promise<Response> {
   try {
     //? Se podria usar el Prisma Client para modificar la DB directamente pero de esta forma no se aprovehcarian los endpoints creados.
     const updatedEmployee = await axios.put('http://localhost:3000/api/employees/edit', { dni, newData });

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { Employee, Role } from "@/types";
 import SelectRole from "../(components)/SelectRole";
@@ -65,12 +65,8 @@ export default function Dashboard({ employees, roles }: EmployeesTableProps) {
     }
   };
 
-  useEffect(() => {
-    console.log("EFECT", data);
-  }, [data]);
-
   return (
-    <section className="flex  flex-col justify-between py-10 items-center justify-items-center min-h-screen ">
+    <section className="flex flex-col justify-between py-10 items-center justify-items-center min-h-screen ">
       <p className="mt-0 p-0.5 border-b text-lg text-center font-bold w-[45%] font-mono">
         .Para editar un empleado modifique los campos y oprima el botón de editar
         <br />

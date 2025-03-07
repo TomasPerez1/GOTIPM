@@ -1,5 +1,5 @@
 "use client";
-import type { Role } from "@/types";
+import  { Role } from "@/types";
 import Image from "next/image";
 import { useFormik } from 'formik';
 import { validate, handleSubmit, getDefaultDate } from "../utils";

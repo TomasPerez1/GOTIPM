@@ -12,7 +12,7 @@ export interface Employee {
   updatedAt: Date;
 }
 
-export type Role = {
+export interface Role  {
   id: number;
   value: string;
   name: string;
@@ -23,4 +23,9 @@ export interface NewEmployeeData {
   description?: string;
   roleId: number;
   dateOfBirth?: Date;
+}
+
+export interface Response {
+  success: boolean;
+  message: string;
 }

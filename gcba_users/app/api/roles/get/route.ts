@@ -13,7 +13,7 @@ export async function GET() :Promise<Response> {
     });
 
   } catch (err) {
-    console.log("Err geting roles", err);
+    console.log("Err fetching roles", err);
     return Response.json({
       err,
     });

@@ -1,6 +1,5 @@
 "use server";
 import { Role } from "@/types";
-import { toast } from "sonner";
 import axios from "axios";
 
 export default async function getRoles(): Promise<Role[] | []> {
@@ -14,7 +13,6 @@ export default async function getRoles(): Promise<Role[] | []> {
     return roles;
 
   } catch (error) {
-    toast.error(`Error ${error}`);
     console.error("Error fetching roles:", error);
     return [];
   }

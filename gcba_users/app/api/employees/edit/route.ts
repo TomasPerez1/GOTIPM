@@ -22,7 +22,6 @@ export async function PUT(request: Request): Promise<Response> {
     }
     if (description) parseNewData.description = description.trim();
     if (roleId) parseNewData.roleId = parseInt(roleId);
-    // console.log("DESDE SERVER", parseNewData.roleId, Role);
     const updatedEmployee = await prisma.employee.update({
       where: {
         dni,
