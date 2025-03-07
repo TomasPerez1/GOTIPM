@@ -18,7 +18,9 @@ model Employee {
   updatedAt   DateTime @updatedAt
 }
 
-model Role {
+// ? Incorpore el modelo Role para saber si es dev o no
+// ? Me parecia mas efectivo y escalable que tener un booleano
+model Role { 
   id        Int        @id @default(autoincrement())
   value     String     @unique
   name      String
