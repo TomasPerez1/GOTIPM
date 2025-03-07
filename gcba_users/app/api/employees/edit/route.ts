@@ -18,8 +18,6 @@ export async function PUT(request: Request): Promise<Response> {
   } catch (err) {
     const message = `Err editing employee ${err}`;
     console.log(message);
-    return Response.json({
-      message,
-    }) ;
+    return Response.error() ;
   }
 }

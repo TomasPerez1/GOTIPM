@@ -11,8 +11,8 @@ interface SelectRoleProps {
 export function SelectRole({ roles, value, onChange, onBlur }: SelectRoleProps) {
   // console.log("DESDE SELECTED", roles);
   return (
-    <select name="role" id="role" onBlur={onBlur} onChange={onChange} value={value}>
-      {roles?.map((rol) => <option value={rol.value} key={rol.id}>{rol.name}</option>)}
+    <select name="Role" id="Role" onBlur={onBlur} onChange={onChange} value={value}>
+      {roles?.map((rol) => <option value={rol.id} key={rol.id}>{rol.name}</option>)}
     </select>
   );
 }

@@ -1,9 +1,10 @@
 import axios  from "axios";
-
+import { DateTime } from "luxon";
+import { toast } from "sonner";
 interface Values {
   fullName: string,
   dni: number | "",
-  role: number | "",
+  Role: number | "",
   dateOfBirth: string,
   description: string,
 }
@@ -11,11 +12,10 @@ interface Values {
 interface ValuesErrors {
   fullName?: string,
   dni?: string,
-  role?: string,
+  Role?: string,
   dateOfBirth?: string,
   description?: string,
 }
-
 
 export const validate = (values: Values) => {
   const errors: ValuesErrors = {};
@@ -35,26 +35,40 @@ export const validate = (values: Values) => {
     errors.fullName = 'Nombre demasiado corto';
   }
 
-  if (!values.role) {
-    errors.role = 'Required';
+  if (!values.Role) {
+    errors.Role = 'Required';
   }
 
   if (!values.dateOfBirth) {
     errors.dateOfBirth = 'Required';
+  } else {
+    const birthDate = DateTime.fromISO(values.dateOfBirth);
+    const age = DateTime.now().diff(birthDate, 'years').years;
+    if (age < 18) {
+      errors.dateOfBirth = 'Debe tener al menos 18 años';
+    }
   }
 
   return errors;
 };
 
-export const handleSubmit = async (values: Values) => {
+export const handleSubmit = async (values: Values, setLoading: (loading: boolean) => void) => {
   try {
+    setLoading(true);
     const createdEmployee = await axios.post("/api/employees/create", { employeeData: values });
-    console.log("SUBmitio", createdEmployee);
+    toast.success("Empleado habilitado con exito");
+    return createdEmployee.data;
   }
   catch (err) {
     console.log(err);
+    toast.error("Erro al habilitar empleado");
   }
   finally {
-    // setLoading(false);
+    setLoading(false);
   }
+};
+
+export const getDefaultDate = () => {
+  const defaultDate = new Date(new Date().setFullYear(new Date().getFullYear() - 19)).toISOString().split('T')[0];
+  return defaultDate;
 };
