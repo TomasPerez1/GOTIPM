@@ -1,11 +1,11 @@
 "use client";
 import  { Role } from "@/types";
-import Image from "next/image";
 import { useFormik } from 'formik';
 import { validate, handleSubmit, getDefaultDate } from "../utils";
 import  SelectRole  from "./SelectRole";
 import  Loader  from "./Loader";
 import { useState } from "react";
+import Footer from "./Footer";
 
 interface HomeProps {
   roles: Role[]
@@ -53,8 +53,8 @@ export default function Home({ roles }: HomeProps) {
   });
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8">
-      <header className={`mt-10 p-0.5 border-b text-xl text-center font-bold w-[35%] font-mono`}>
+    <div className="flex flex-col gap-4 py-20 md:p-8 md:grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen ">
+      <header className={`md:mt-10 p-0.5 border-b text-xl text-center font-bold md:w-[65%] lg:w-[35%] font-mono`}>
         Complete el formulario con los datos solicitados para dar de alta un nuevo empleado.
       </header>
       <form className="grid grid-cols-2 min-w-[48%] rounded-xl px-4 py-10 shadow-2xl border-2 border-[#192c3f]  gap-4 bg-[#1f374f]" onSubmit={formik.handleSubmit}>
@@ -107,24 +107,7 @@ export default function Home({ roles }: HomeProps) {
         </button>
       </form>
 
-
-      {/* // ? Refactorizar footer */}
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://buenosaires.gob.ar/inicio/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/gcba_title_logo.svg"
-            alt="Globe icon"
-            width={250}
-            height={250}
-          />
-        </a>
-      </footer>
+      <Footer/>
     </div>
   );
 }
