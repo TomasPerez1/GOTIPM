@@ -7,7 +7,9 @@ interface DeleteEmployee {
 
 export default async function deleteEmployee({ dni }: DeleteEmployee) { // ? Poner que retorna
   try {
-    const response = await axios.put('http://localhost:3000/api/employees/delete',{ dni });
+    const response = await axios.delete('http://localhost:3000/api/employees/delete', {
+      data: { dni }
+    });
     const deletedEmployee = response.data;
     return { success: true, message: `Empleado con DNI ${dni} eliminado`, deletedEmployee };
   } catch (error) {
