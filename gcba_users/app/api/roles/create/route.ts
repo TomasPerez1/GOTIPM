@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 
-export async function GET() {
+export async function GET(): Promise<Response> {
   try {
     const _roles = [
       { value: "dev", name: "Desarrollador" },
@@ -12,20 +12,17 @@ export async function GET() {
     const prisma = new PrismaClient();
 
     const main = async () => {
-      await prisma.role.createMany({
+      const created = await prisma.role.createMany({
         data: _roles
       });
+      return created;
     };
-    const res = await main();
+    const createdRoles = await main();
 
-    return Response.json({
-      res
-    });
+    return Response.json(createdRoles);
 
   } catch (err) {
     console.log("Err creating roles", err);
-    return Response.json({
-      err,
-    });
+    return Response.json([]);
   }
 }

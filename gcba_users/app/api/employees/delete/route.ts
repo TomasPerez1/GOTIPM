@@ -12,9 +12,7 @@ export async function DELETE(request: Request): Promise<Response> {
       }
     });
 
-    return Response.json({
-      deletedEmployee
-    });
+    return Response.json(deletedEmployee);
 
   } catch (err) {
     const message = `Err deleting employee ${err}`;

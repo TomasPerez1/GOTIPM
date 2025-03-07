@@ -1,8 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 
-export async function GET() {
+export async function GET() :Promise<Response> {
   try {
-    console.log("ENTTRO AL GET");
     const prisma = new PrismaClient();
 
     const roles = await prisma.role.findMany({});

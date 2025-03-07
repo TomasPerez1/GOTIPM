@@ -5,7 +5,7 @@ interface LoaderProps {
 }
 
 
-export const Loader = ({ text, className }: LoaderProps) => {
+export default function Loader({ text, className }: LoaderProps) {
   return (
     <span className="flex items-center gap-2">
       <svg className={`size-6 animate-spin ${className}` }viewBox="0 0 24 24">

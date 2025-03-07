@@ -3,8 +3,8 @@ import type { Role } from "@/types";
 import Image from "next/image";
 import { useFormik } from 'formik';
 import { validate, handleSubmit, getDefaultDate } from "../utils";
-import { SelectRole } from "./SelectRole";
-import { Loader } from "./Loader";
+import  SelectRole  from "./SelectRole";
+import  Loader  from "./Loader";
 import { useState } from "react";
 
 interface HomeProps {
@@ -41,7 +41,7 @@ export default function Home({ roles }: HomeProps) {
     initialValues: {
       fullName: "",
       dni: "",
-      Role: roles[0].id,
+      Role: roles[0]?.id,
       dateOfBirth: getDefaultDate(),
       description: "",
     },
@@ -53,7 +53,7 @@ export default function Home({ roles }: HomeProps) {
   });
 
   return (
-    <div className=" grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8">
+    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8">
       <header className={`mt-10 p-0.5 border-b text-xl text-center font-bold w-[35%] font-mono`}>
         Complete el formulario con los datos solicitados para dar de alta un nuevo empleado.
       </header>
@@ -67,6 +67,7 @@ export default function Home({ roles }: HomeProps) {
             {field.type === "select" ? (
               <SelectRole
                 roles={roles}
+                name="Role"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
                 value={formik.values[field.id]}
@@ -99,13 +100,15 @@ export default function Home({ roles }: HomeProps) {
 
         <button
           disabled={Object.keys(formik.errors).length ? true : false}
-          className={`font-mono place-self-center border col-span-2 bg-gray-200 text-black rounded-lg text-md px-4 py-2 hover:bg-[#4a5d75] hover:text-white hover:border-white transition-colors hover:cursor-pointer disabled:opacity-15 disabled:pointer-events-none ${!Object.keys(formik.errors).length && formik.values.fullName.length > 1 && "animate-pulse"}`}
+          className={`default-button place-self-center border col-span-2  ${!Object.keys(formik.errors).length && formik.values.fullName.length > 1 && "animate-pulse"}`}
           type="submit"
         >
           {!loading ? "HABILITAR EMPLEADO" : <Loader text="creando empleado"/>}
         </button>
       </form>
 
+
+      {/* // ? Refactorizar footer */}
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
