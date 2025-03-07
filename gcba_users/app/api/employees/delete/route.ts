@@ -21,8 +21,6 @@ export async function DELETE(request: Request): Promise<Response> {
   } catch (err) {
     const message = `Err deleting employee ${err}`;
     console.log(message);
-    return Response.json({
-      message,
-    }) ;
+    return Response.error() ;
   }
 }

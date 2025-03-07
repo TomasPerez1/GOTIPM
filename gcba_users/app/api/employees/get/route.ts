@@ -10,8 +10,6 @@ export async function GET():Promise<Response> {
   } catch (err) {
     const message = `Err geting employee ${err}`;
     console.log(message);
-    return Response.json({
-      message,
-    }) ;
+    return Response.error() ;
   }
 }
