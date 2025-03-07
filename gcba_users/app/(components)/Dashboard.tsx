@@ -7,6 +7,7 @@ import { DateTime } from "luxon";
 import editEmployee from "@/actions/editEmployee";
 import { toast } from "sonner";
 import deleteEmployee from "@/actions/deleteEmployee";
+import Footer from "./Footer";
 
 interface EmployeesTableProps {
   employees: Employee[];
@@ -17,7 +18,10 @@ interface EmployeeDictionary {
   [key: string]: Employee
 }
 
+
+
 export default function Dashboard({ employees, roles }: EmployeesTableProps) {
+  // ? Creo un diccionario para un mejor rendimien en el caso de exisitir muchos empleados
   const getDictionary = () => {
     const dictionary: EmployeeDictionary = {};
     employees.forEach((employee) => {
@@ -65,24 +69,22 @@ export default function Dashboard({ employees, roles }: EmployeesTableProps) {
     }
   };
 
+  const th = ["DNI", "Nombre Completo", "Fecha de Nacimiento", "Puesto de trabajo", "Descripción", "Editar", "Eliminar"];
+
   return (
-    <section className="flex flex-col justify-between py-10 items-center justify-items-center min-h-screen ">
-      <p className="mt-0 p-0.5 border-b text-lg text-center font-bold w-[45%] font-mono">
+    <section className="px-5 overflow-x-auto flex flex-col justify-center gap-7 md:justify-between md:py-10 items-center justify-items-center min-h-screen ">
+      <p className="mt-0 p-0.5 border-b text-lg text-center font-bold md:w-[45%] font-mono">
         .Para editar un empleado modifique los campos y oprima el botón de editar
         <br />
         .Para eleiminiar un empleado oprima el botón de eliminar
       </p>
       {!Object.values(data).length ? <h1 className="font-mono">No hay empleados cargados en la DB</h1> :
-        <table className="min-w-[95%] mx-auto border-[#192c3f] border bg-[#1f374f] rounded-xl">
+        <table className=" min-w-[95%] mx-auto border-[#192c3f] border bg-[#1f374f] rounded-xl">
           <thead className="rounded-xl ">
             <tr className="bg-gray-600 text-center">
-              <th className="py-2 px-4 ">DNI</th>
-              <th className="py-2 px-4 ">Nombre Completo</th>
-              <th className="py-2 px-4 ">Fecha de Nacimiento</th>
-              <th className="py-2 px-4 ">Puesto de trabajo</th>
-              <th className="py-2 px-4 ">Descripción</th>
-              <th className="py-2 px-4 ">Editar</th>
-              <th className="py-2 px-4 ">Eliminar</th>
+              {th.map((header) => (
+                <th className="py-2 px-4 " key={header}>{header}</th>
+              ))}
             </tr>
           </thead>
           <tbody className="rounded-xl border-0">
@@ -175,22 +177,7 @@ export default function Dashboard({ employees, roles }: EmployeesTableProps) {
           </tbody>
         </table>}
 
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://buenosaires.gob.ar/inicio/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/gcba_title_logo.svg"
-            alt="Globe icon"
-            width={250}
-            height={250}
-          />
-        </a>
-      </footer>
+      <Footer/>
     </section>
   );
 }
