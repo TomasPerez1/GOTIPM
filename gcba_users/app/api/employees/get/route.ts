@@ -8,7 +8,7 @@ export async function GET():Promise<Response> {
     return Response.json(employees);
 
   } catch (err) {
-    const message = `Err geting employee ${err}`;
+    const message = `Err fetching employee ${err}`;
     console.log(message);
     return Response.error() ;
   }

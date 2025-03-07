@@ -44,3 +44,16 @@ input, select, textarea:focus {
   border: 0px;
   outline: #ffffff;
 }
+
+td, th {
+  border: 1.5px solid #38485c;
+}
+
+/* th {
+  border: 1.5px solid black;
+} */
+
+.default-button {
+  @apply font-mono bg-gray-200 text-black rounded-lg text-[1rem] px-4 py-2 hover:bg-[#4a5d75] hover:text-white hover:border-white transition-colors hover:cursor-pointer disabled:opacity-15 disabled:pointer-events-none;
+}
+
